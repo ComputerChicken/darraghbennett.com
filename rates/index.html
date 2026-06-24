@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Darragh Bennett</title>
+</head>
+<body id="body" style="height: 100vh; overflow: visible;">
+    <div id="top-bar">
+        <div class="top-option" onclick="window.location='rates'">Rates</div>
+        <div class="top-option">Clients</div>
+        <div class="top-option" onclick="window.location='/'">About Me</div>
+    </div>
+    <div class="centerh" style="width:100%; margin-top:75px; margin-bottom:25px; font-weight: 750; font-size: 30px;">
+        Web Developement
+    </div>
+    <div class="centerh" style="align-items: flex-start; width:100%; gap:30px">
+        <div class="price" style="margin-top: 50px;">
+            Basic<br>
+            <p style="font-size:30px; font-weight: 750;">$100</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 1 page<br>
+                🞄 1-year domain registration<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+        <div class="price">
+            Standard<br>
+            <p style="font-size:30px; font-weight: 750;">$300</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 3 pages<br>
+                🞄 1-year domain registration<br>
+                🞄 3 file uploads<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+        <div class="price" style="margin-top: 50px;">
+            Advanced<br>
+            <p style="font-size:30px; font-weight: 750;">$500</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 5 pages<br>
+                🞄 1-year domain registration<br>
+                🞄 5 file uploads<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+    </div>
+    <div style="width:100%; border: 1px solid #fff; margin-top:50px;"></div>
+    <div class="centerh" style="width:100%; margin-top:75px; margin-bottom:25px; font-weight: 750; font-size: 30px;">
+        Penetration Testing
+    </div>
+    <div class="centerh" style="align-items: flex-start; width:100%; gap:30px">
+        <div class="price" style="margin-top: 50px;">
+            Basic<br>
+            <p style="font-size:30px; font-weight: 750;">$500</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 10 hours<br>
+                🞄 2 platforms<br>
+                🞄 CompTIA Certified<br>
+                🞄 Detialed report<br>
+                🞄 Manual testing<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+        <div class="price">
+            Standard<br>
+            <p style="font-size:30px; font-weight: 750;">$1,000</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 20 hours<br>
+                🞄 All platforms<br>
+                🞄 CompTIA Certified<br>
+                🞄 Detialed report<br>
+                🞄 Manual testing<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+        <div class="price" style="margin-top: 50px;">
+            Advanced<br>
+            <p style="font-size:30px; font-weight: 750;">$1,500</p><br>
+            Includes:
+            <p style="font-weight: 100; margin-top:0; margin-bottom: 0;">
+                🞄 40 hours<br>
+                🞄 All platforms<br>
+                🞄 CompTIA Certified<br>
+                🞄 Detialed report<br>
+                🞄 Manual and scripted testing<br>
+            </p>
+            <br>
+            <button style="font-size: 17px;">Get this plan</button>
+        </div>
+    </div>
+</body>
+<script>
+    function randomChoice(choices) {
+        const randomIndex = Math.floor(Math.random() * choices.length);
+
+        return choices[randomIndex];
+    }
+    for (let i = 0; i < 500; i++) {
+        const star = document.createElement("div")
+        star.className = "star"
+        star.style.top = (Math.random() * 200).toString() + "vh"
+        star.style.left = (Math.random() * 100).toString() + "vw"
+        star.style.backgroundColor = randomChoice(["#fff","#ddf","#fdd"])
+        const size = Math.random()*3
+        star.style.width = size + "px"
+        star.style.height = size + "px"
+        star.style.borderRadius = "100%"
+        body.appendChild(star)
+        
+    }
+</script>
+</html>

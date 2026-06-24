@@ -1,0 +1,196 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    background: #000f;
+}
+#bg {
+    background: #000;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+div {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+#click {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+#fade-gradient {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,1));
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width:100%;
+    z-index: 999;
+}
+.star {
+    position: absolute;
+    background-color: #fff;
+    width: 2px;
+    height: 2px;
+    z-index: 98;
+    box-shadow: 0 0 1px #fff,
+    0 0 2px #fff,
+    0 0 3px #fff
+}
+.centerh {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.section {
+    width: 75%;
+    background-color: #000;
+    border: solid #fff 1px;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin: auto;
+    height: min-content;
+    margin-top: 20px
+}
+.row {
+    opacity: 0;
+    width:50vw;
+    display: block;
+    justify-content: center;
+    margin-bottom: 30vh;
+    transition: 1s ease-in-out;
+    z-index: 99;
+}
+.row.active {
+    opacity: 1;
+}
+.section-header {
+    font-weight: 750;
+}
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    height: 0; /* For horizontal scrollbar */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+a {
+    color: #aaf;
+    text-decoration: none;
+    font-weight: 750;
+}
+.title {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#title-text {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: flyInFromLeft 1s ease-out forwards;
+    font-weight: 750;
+}
+.glow {
+    text-shadow: 0 0 10px #666,
+    0 0 20px #666
+}
+#blackout {
+    background-color: #000;
+    opacity: 0;
+    z-index: 97;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+}
+#blackout.active {
+    opacity: 1;
+}
+@keyframes flyInFromLeft {
+    0% {
+    transform: translateX(-100%);
+    opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+#top-bar {
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: #000;
+    border-bottom: #fff 2px solid;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+.top-option {
+    display: inline-block;
+    font-weight: 750;
+    position: relative;
+    cursor: default;
+    transition: 0.25s ease-out;
+    cursor: pointer;
+}
+.top-option:hover {
+    padding-bottom: 5px;
+    transform: translate(0, -3px);
+}
+.top-option::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom left;
+  transition: transform 0.25s ease-out;
+}
+.top-option:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+.price {
+    width: 25%;
+    background-color: #000;
+    border: #fff 2px solid;
+    border-radius: 20px;
+    z-index: 1000;
+    font-weight: 750;
+    padding: 20px;
+}
+button {
+    background-color: #000;
+    border-radius: 15px;
+    border: #fff 2px solid;
+    padding: 10px;
+    color: #fff;
+    font-weight: 750;
+    transition: 0.25s ease-out;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #fff;
+    color: #000;
+}
