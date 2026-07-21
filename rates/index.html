@@ -26,7 +26,7 @@
                 ● 1-year domain registration<br>
             </p>
             <br>
-            <button style="font-size: 17px;">Get this plan</button>
+            <button style="font-size: 17px;" onclick="goToPlan('Web Developement - Basic')">Get this plan</button>
         </div>
         <div class="price flyin" style="transition-delay: 0.2s;">
             Standard<br>
@@ -153,5 +153,11 @@
             }
         });
     });
+    function goToPlan(plan) {
+        const url = new URL("/getplan/", window.location.origin);
+        url.searchParams.set('plan', plan);
+        console.log(url.toString())
+        window.location.href = url.toString();
+    }
 </script>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Darragh Bennett</title>
+</head>
+<body id="body" style="overflow: hidden;">
+    <div id="idek" style="z-index: 1000; position: relative;">
+        <div id="top-bar">
+            <div class="top-option" onclick="window.location='/rates'">Rates</div>
+            <div class="top-option" onclick="window.location='/clients'">Clients</div>
+            <div class="top-option" onclick="window.location='/'">About Me</div>
+        </div>
+        
+        <div class="centerh" style="align-items: center; height: 100vh;">
+            <div id="main-wrapper" style="background-color: #000; border: #fff 2px solid; border-radius: 30px; width: fit-content; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px;">
+                <p id="selected" style="font-weight: 750; font-size: 30px; margin-top: 0;"></p>
+                <input placeholder="Name *" id="name" style="width: 80%; margin-bottom: 20px;">
+                <input placeholder="Email *" id="email" style="width: 80%; margin-bottom: 20px;">
+                <input placeholder="Phone" id="phone" style="width: 80%; margin-bottom: 20px;">
+                <input placeholder="Website/app *" id="webapp" style="width: 80%; margin-bottom: 20px;">
+                <button style="font-size: 15px;" onclick="sumbit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function randomChoice(choices) {
+        const randomIndex = Math.floor(Math.random() * choices.length);
+
+        return choices[randomIndex];
+    }
+    for (let i = 0; i < 500; i++) {
+        const star = document.createElement("div")
+        star.className = "star"
+        star.style.top = (Math.random() * document.body.scrollHeight).toString() + "px"
+        star.style.left = (Math.random() * 100).toString() + "vw"
+        star.style.backgroundColor = randomChoice(["#fff","#ddf","#fdd"])
+        const size = Math.random()*3
+        star.style.width = size + "px"
+        star.style.height = size + "px"
+        star.style.borderRadius = "100%"
+        body.appendChild(star)
+    }
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    } else {
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+        });
+    }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const plan = urlParams.get("plan")
+    document.getElementById("selected").textContent = plan
+    
+    async function sumbit() {
+        const url = 'http://127.0.0.1:21478/submit';
+
+        let stop = false;
+
+        if(document.getElementById("name").value == "") {
+            document.getElementById("name").style.borderColor = "#d00"
+            stop = true;
+        }
+
+        if(document.getElementById("email").value == "") {
+            document.getElementById("email").style.borderColor = "#d00"
+            stop = true;
+        }
+
+        if(document.getElementById("webapp").value == "") {
+            document.getElementById("webapp").style.borderColor = "#d00"
+            stop = true;
+        }
+
+        if(stop) {
+            return;
+        }
+
+        const payload = {
+            plan: plan,
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            webapp: document.getElementById("webapp").value
+        };
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+            const text = await response.text()
+            if(text == "true") {
+                window.location = "/thankyou";
+            } else {
+                const errorElem = document.createElement("p")
+                errorElem.textContent = "Error! Try again later :("
+                errorElem.style.marginTop = "0"
+                errorElem.style.color = "#d00"
+                document.getElementById("main-wrapper").prepend(errorElem);
+            }
+        } catch {
+            const errorElem = document.createElement("p")
+            errorElem.textContent = "Error! Try again later :("
+            errorElem.style.marginTop = "0"
+            errorElem.style.color = "#d00"
+            document.getElementById("main-wrapper").prepend(errorElem);
+        }
+    }
+</script>
+</html>
