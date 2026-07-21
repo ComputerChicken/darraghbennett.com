@@ -8,6 +8,18 @@ const port = 21478;
 app.use(cors());
 app.use(express.json()); 
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://your-frontend-domain.com');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  // Instantly respond to preflight
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
+
 async function writeTextFile(name, content) {
     console.log("Recieved plan form from: " + name)
     try {
