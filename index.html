@@ -6,10 +6,11 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Darragh Bennett</title>
 </head>
-<body id="body" style="height: 100vh">
+<body id="body">
+    <div id="star-container" style="overflow: hidden;"></div>
     <div id="top-bar">
         <div class="top-option" onclick="window.location='rates'">Rates</div>
-        <div class="top-option">Clients</div>
+        <div class="top-option" onclick="window.location='clients'">Clients</div>
         <div class="top-option" onclick="window.location='/'">About Me</div>
     </div>
     
@@ -22,7 +23,7 @@
         </div>
     </div>
     <div style="height: 20vh;"></div>
-    <div class="centerh" style="display: flex; justify-content: center; position: absolute; left: 0; top: 50px;">
+    <div class="centerh" id="row-wrapper">
     <div class="centerh row">
         <div class="section">
             <div class="section-header">
@@ -114,7 +115,6 @@
         </div>
     </div>
     </div>
-    <div class="star"></div>
     <div id="click"></div>
 </body>
 <script>
@@ -134,19 +134,24 @@
             element.classList.toggle('active')
         });
         blackout.classList.toggle('active');
+        document.querySelectorAll('.star').forEach(el => {
+            if (el.getBoundingClientRect().top > (document.getElementById("row-wrapper").scrollHeight + 200)) {
+                el.remove();
+            }
+        });
+
     });
     for (let i = 0; i < 500; i++) {
         const star = document.createElement("div")
         star.className = "star"
-        star.style.top = (Math.random() * 200).toString() + "vh"
+        star.style.top = (Math.random() * document.body.scrollHeight * 3).toString() + "px"
         star.style.left = (Math.random() * 100).toString() + "vw"
         star.style.backgroundColor = randomChoice(["#fff","#ddf","#fdd"])
         const size = Math.random()*3
         star.style.width = size + "px"
         star.style.height = size + "px"
         star.style.borderRadius = "100%"
-        body.appendChild(star)
-        
+        document.getElementById("star-container").appendChild(star)
     }
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';

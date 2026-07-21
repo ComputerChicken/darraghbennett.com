@@ -1,7 +1,13 @@
+html {
+    height: 100%;
+    interpolate-size: allow-keywords
+}
+
 body {
     margin: 0px;
     overflow: hidden;
     background: #000f;
+    height: 100%;
 }
 #bg {
     background: #000;
@@ -49,6 +55,7 @@ div {
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 .section {
     width: 75%;
@@ -68,7 +75,7 @@ div {
     width:50vw;
     display: block;
     justify-content: center;
-    margin-bottom: 30vh;
+    margin-bottom: 0;
     transition: 1s ease-in-out;
     z-index: 99;
 }
@@ -193,4 +200,60 @@ button {
 button:hover {
     background-color: #fff;
     color: #000;
+}
+
+.flyin {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity ease-out 1.25s, transform ease 1.25s, ease-out 1.25s;
+    @starting-style {
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+}
+
+.price-container {
+    align-items: flex-start;
+    width:100%;
+    gap:30px;
+    overflow-y: hidden;
+    height: auto;
+    transition: height ease 2s;
+    @starting-style {
+        height: 200vh;
+    }
+}
+
+#row-wrapper {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+    .price-container {
+        display: flex;
+        width:100%;
+        gap:30px;
+    }
+    .price {
+        margin-top: 10px !important;
+        width: 80%;
+        margin: 5px auto !important;
+    }
+    .price-container {
+        flex-direction: column;
+    }
+    .price-container {
+        flex-direction: column;
+    }
+    #row-wrapper {
+        flex-direction: column;
+    }
+    .row {
+        width: 100vw;
+        margin-bottom: 0;
+    }
 }

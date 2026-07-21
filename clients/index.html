@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Darragh Bennett</title>
+</head>
+<body id="body" style="overflow: hidden;">
+    <div id="idek" style="z-index: 1000; position: relative;">
+        <div id="top-bar">
+            <div class="top-option" onclick="window.location='/rates'">Rates</div>
+            <div class="top-option" onclick="window.location='/clients'">Clients</div>
+            <div class="top-option" onclick="window.location='/'">About Me</div>
+        </div>
+        <div class="centerh" style="align-items: center; height: 100vh;">
+            <div>
+                <p style="font-weight: 200; font-size: 30px;">None yet!</p>
+                <button style="width: 200px; font-weight: 750; font-size: 30px;" onclick="window.location = '/rates'">Be our first</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function randomChoice(choices) {
+        const randomIndex = Math.floor(Math.random() * choices.length);
+
+        return choices[randomIndex];
+    }
+    for (let i = 0; i < 500; i++) {
+        const star = document.createElement("div")
+        star.className = "star"
+        star.style.top = (Math.random() * document.body.scrollHeight).toString() + "px"
+        star.style.left = (Math.random() * 100).toString() + "vw"
+        star.style.backgroundColor = randomChoice(["#fff","#ddf","#fdd"])
+        const size = Math.random()*3
+        star.style.width = size + "px"
+        star.style.height = size + "px"
+        star.style.borderRadius = "100%"
+        body.appendChild(star)
+    }
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    } else {
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+        });
+    }
+</script>
+</html>
