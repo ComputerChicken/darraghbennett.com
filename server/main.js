@@ -5,12 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 21478;
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+app.use(cors());
 
 app.use(express.json()); 
 
